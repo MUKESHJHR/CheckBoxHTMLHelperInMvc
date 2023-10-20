@@ -1,0 +1,26 @@
+﻿@model List<CheckBoxHTMLHelperInMvc.Models.City>
+
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = null;
+}
+
+@using (Html.BeginForm())
+{
+    <table>
+        @for (var i = 0; i < Model.Count(); i++)
+        {
+            <tr>
+                <td>
+                    @Html.HiddenFor(c => c[i].CityId)
+                    @Html.HiddenFor(c => c[i].CityName)
+                    @Html.DisplayFor(c => c[i].CityName)
+                </td>
+                <td>
+                    @Html.CheckBoxFor(c => c[i].IsSelected,new {style= "vertical-align:3px;"})
+                </td>
+            </tr>
+        }
+    </table>
+    <input id="Submit1" type="submit" value="Submit" />
+}
